@@ -219,8 +219,8 @@ namespace UnityBuilderAction
 #endif
             };
 
-            string buildDirectory = filePath.Substring(0, filePath.LastIndexOf('/')) + "/";
-            string assetBundleDirectory = buildDirectory + appName + dataPath + "StreamingAssets";
+            string buildDirectory = Path.GetDirectoryName(filePath);
+            string assetBundleDirectory = Path.Combine(buildDirectory, appName, dataPath, "StreamingAssets");
             if (!Directory.Exists(assetBundleDirectory))
             {
                 Directory.CreateDirectory(assetBundleDirectory);
